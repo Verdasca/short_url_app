@@ -1,0 +1,85 @@
+<!DOCTYPE>
+<html ng-app="shortUrlApp">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<title>Verdasquinha - Generating Short URL</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/landing-page.min.css" rel="stylesheet">
+</head>
+<body ng-controller="shortUrlController" style="background-color: #f8f9fa !important;">
+	<!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <span class="navbar-brand">Verdasquinha - Generating Short URL</span>
+      </div>
+    </nav>
+    <!-- Header/Main content -->
+    <header class="masthead text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h4 class="mb-5">Welcome to Verdasquinha. Generate a short version of an url and use it to redirect to your original url.</h4>
+            <h5 class="mb-5">Please enter an url to obtain the shorter version.</h5>
+          </div>
+          <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <form novalidate name="mainForm">
+            	<div class="form-row">
+	                <div class="col-12">
+						<div class="input-group mb-3">
+					    	<input type="text" class="form-control" name="urlInput" placeholder="Enter url" ng-model="url.original" ng-pattern="regex">
+						    <div class="input-group-append">
+						    	<button class="btn btn-primary" type="button" ng-click="generateShortUrl();">
+						    		Generate
+						    	</button>
+						    </div>
+					  	</div>
+					  	<!-- Error message -->
+						<div class="text-danger bg-light mb-3 rounded border border-danger h-25 align-middle" 
+							 ng-show="mainForm.urlInput.$error.pattern">
+					  		Invalid url! Example: http://google.com
+					  	</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<!-- Success message - Short URL -->
+						<div class="ng-hide text-success bg-light mb-3 rounded border border-success h-25" 
+							 ng-show="shortUrlInput"
+							 ng-hide="!shortUrlInput || mainForm.urlInput.$error.pattern">
+							Short url: {{url.short}}
+						</div>
+				  	</div>
+			  	</div>
+		  	</form>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <p class="text-muted small mb-4 mb-lg-0">&copy; Verdasquinha by Cristina Verdasca</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="controllers/controller.js"></script>
+	<!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
